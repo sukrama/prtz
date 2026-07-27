@@ -50,12 +50,16 @@ for row in "${ROWS[@]}"; do
   curl -fSL --retry 3 -o "$work/proot.deb" \
     "$BASE_PKG/proot_${PROOT_DEB_VERSION}_${debarch}.deb"
   extract_deb "$work" "$work/proot.deb"
-  if [ ! -f "$work/extract/usr/bin/proot" ]; then
+  if [ ! -f "$work/extract/usr/bin/proot" ] && [ ! -f "$work/extract/usr/libexec/proot" ]; then
     echo "proot ELF missing for $uarch" >&2
     find "$work/extract" -name proot >&2 || true
     exit 1
   fi
-  cp -v "$work/extract/usr/bin/proot" "$out/bin/proot"
+  if [ -f "$work/extract/usr/bin/proot" ]; then
+    cp -v "$work/extract/usr/bin/proot" "$out/bin/proot"
+  else
+    cp -v "$work/extract/usr/libexec/proot" "$out/bin/proot"
+  fi
   chmod 0755 "$out/bin/proot"
   cd /tmp && rm -rf "$work"
 done
