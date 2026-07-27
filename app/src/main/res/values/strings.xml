@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Alpine</string>
+    <string name="notification_channel_name">Alpine Session</string>
+    <string name="notification_text">Proot-Alpine session running</string>
+</resources>

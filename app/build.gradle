@@ -1,0 +1,32 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'io.alpine.term'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "io.alpine.term"
+        minSdk 24
+        targetSdk 34
+        versionCode 1
+        versionName "0.1.0"
+        ndk {
+            abiFilters 'arm64-v8a', 'armeabi-v7a', 'x86_64'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}
+
+dependencies {
+    implementation project(':terminal-emulator')
+    implementation project(':terminal-view')
+    implementation 'androidx.core:core:1.12.0'
+    implementation 'org.apache.commons:commons-compress:1.25.0'
+    implementation 'org.tukaani:xz:1.9'
+}
