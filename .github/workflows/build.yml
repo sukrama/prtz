@@ -17,13 +17,14 @@ jobs:
           distribution: temurin
           java-version: '17'
 
-      - uses: android-actions/setup-android@v3
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
         with:
-          android-version: '34'
-          cmdline-tools-version: '11076708'
-          components: 'platform-tools,build-tools;34.0.0,ndk;26.1.10909125'
+          packages: 'platform-tools|build-tools;34.0.0|ndk;26.1.10909125'
 
       - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.7'
 
       - name: Fetch proot-Alpine assets
         run: ./scripts/fetch-assets.sh
