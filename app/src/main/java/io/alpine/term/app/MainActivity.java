@@ -36,6 +36,7 @@ public final class MainActivity extends Activity implements ServiceConnection {
         @Override public boolean shouldEnforceCharBasedInput() { return false; }
         @Override public boolean shouldUseCtrlSpaceWorkaround() { return false; }
         @Override public boolean isTerminalViewSelected() { return true; }
+        @Override public boolean shouldSupportClipboardKeybindings() { return true; }
         @Override public void copyModeChanged(boolean copyMode) {}
         @Override public boolean onKeyDown(int keyCode, KeyEvent e, TerminalSession session) { return false; }
         @Override public boolean onKeyUp(int keyCode, KeyEvent e) { return false; }
